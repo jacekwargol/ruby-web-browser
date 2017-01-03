@@ -7,13 +7,15 @@ host = 'localhost'
 port = 2000
 socket = TCPSocket.open(host, port)
 path = '/thanks.html'
-method = 'POST'
+method = 'GET'
 
 if method == 'POST'
-  puts 'What is your name?'
-  name = gets.chomp
-  puts 'What is pur email address?'
-  email = gets.chomp
+  # puts 'What is your name?'
+  # name = gets.chomp
+  # puts 'What is pur email address?'
+  # email = gets.chomp
+  name = 'a'
+  email = 'em'
   user = {user: {name: name, email: email}}
   # TODO: add proper headings
   request = %{#{method} #{path} HTTP/1.0\r
