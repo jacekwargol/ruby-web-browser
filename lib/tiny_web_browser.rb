@@ -10,12 +10,10 @@ path = '/thanks.html'
 method = 'POST'
 
 if method == 'POST'
-  # puts 'What is your name?'
-  # name = gets.chomp
-  # puts 'What is pur email address?'
-  # email = gets.chomp
-  name = 'a'
-  email = 'em'
+  puts 'What is your name?'
+  name = gets.chomp
+  puts 'What is pur email address?'
+  email = gets.chomp
   user = {user: {name: name, email: email}}
   # TODO: add proper headings
   request = %{#{method} #{path} HTTP/1.0\r
@@ -36,15 +34,3 @@ if status_code == '200'
 else
   puts "#{status_code}"
 end
-
-#
-# host = 'localhost'
-# path = '/index.html'
-#
-# http = Net::HTTP.new(host, 2000)
-# headers, body = http.get(path)
-# if headers.code == '200'
-#   print body
-# else
-#   puts "#{headers.code} #{headers.message}"
-# end

@@ -30,22 +30,25 @@ loop do
       else
         response = %{HTTP/1.0 404 Not Found\r\n\r\n}
       end
-      client.puts(response)
 
     elsif method == 'POST'
       if File.exists?("..#{path}")
-        puts 'post exists'
-        file = File.open("..#{path}")
-        headers, body = request.split("\r\n\r\n", 2)
-        puts bpdy
+        file = File.read("..#{path}")
         params = JSON.parse(body)
-        puts "asa #{body}"
+        puts params
+        user = ''
+        params['user'].each_pair do |key, val|
+          user << "<li>#{key.capitalize}: #{val}</li>"
+        end
+        file = file.gsub(/<%= yield %>/, user)
         response = %{HTTP/1.0 200 OK\r\n\r
-        #{file.read}}
+        #{file}}
       else
         response = %{HTTP/1.0 404 Not Found\r\n\r\n}
       end
     end
+
+    client.puts(response)
     client.close
   end
 end
